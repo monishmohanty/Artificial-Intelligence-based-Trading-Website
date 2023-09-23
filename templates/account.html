@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+    <h1> Account Details
+    <style>
+    h1 {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 4rem;
+        color: white;
+
+    }</style>
+    </h1>
+
+<div class = "text-block">
+
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> Username : {{ user.username }} </h3>
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> Email : {{ user.email }} </h3>
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> Pan Number : {{ user.pan_number }} </h3>
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> Phone Number : {{ user.phone_number }} </h3>
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> FXCM ID : {{ user.forex_id }} </h3>
+    <h3 class = "text1" style="font-size: 1.6em; color:whitesmoke"> API Key : {{ user.api_key }} </h3>
+
+</div>
+
+</head>
+</html>

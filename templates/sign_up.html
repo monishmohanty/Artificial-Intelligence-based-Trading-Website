@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="sign_up">
+			<h1>Register</h1>
+			<form action="{{ url_for('sign_up') }}" method="post" autocomplete="off">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+
+				<label for="password2">
+					<i class="fas fa-lock-open"></i>
+				</label>
+				<input type="password" name="password2" placeholder="Confirm Password" id="password2" required>
+
+				<label for="pan_number">
+					<i class="fas fa-solar-panel"></i>
+				</label>
+				<input type="text" name="pan_number" placeholder="Pan number" id="pan_number" required>
+
+				<label for="phone_number">
+					<i class="fas fa-phone"></i>
+				</label>
+				<input type="text" name="phone_number" placeholder="Phone number" id="phone_number" required>
+
+				<label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input type="email" name="email" placeholder="Email" id="email" required>
+
+				<label for="forex_id">
+					<i class="fas fa-coins"></i>
+				</label>
+				<input type="text" name="forex_id" placeholder="Paste your Fxcm id" id="forex_id" required>
+
+				<label for="api_key">
+					<i class="fas fa-key"></i>
+				</label>
+				<input type="text" name="api_key" placeholder="Paste your API key" id="api_key" required>
+
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Register">
+			</form>
+		</div>
+
+		<div class="text1"> 
+			<p>Don't have an Fxcm account? Get it <a class= "text1" href="https://www.fxcm.com/markets/">here!</a></p>
+		</div>
+
+		<div class="text1"> 
+			<p style="color: aliceblue"><a class= "text1" href="{{url_for('index')}}">Go back to Homepage</a></p>
+		</div>
+
+	</body>
+</html>

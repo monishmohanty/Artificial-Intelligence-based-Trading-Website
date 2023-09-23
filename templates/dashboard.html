@@ -1,0 +1,516 @@
+
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/assets2/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="static/assets2/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/assets2/libs/css/style.css">
+    <link rel="stylesheet" href="static/assets2/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="static/assets2/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="static/assets2/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="static/assets2/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="static/assets2/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="static/assets2/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>TRADE.AI</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="dashboard.html">Trade.ai</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="static/assets2/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">{{session.username}}</span>Welcome to Trade.ai <br> Hope you have fun!
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="{{ url_for('stock') }}">Populate Stock</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="static/assets2/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name"> {{session.username}} </h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="{{ url_for('account') }}"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="{{ url_for('profile') }}"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>                        
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="{{ url_for('dashboard') }}" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="{{ url_for('account') }}" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Account<span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="{{ url_for('profile') }}" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Settings <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="{{ url_for('logout') }}" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Logout <span class="badge badge-success">6</span></a>
+                            </li>
+                            
+                            <li class="nav-divider">
+                                Features
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i> Account Balance </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"><i class="fas fa-fw fa-inbox"></i>Algorithm Table<span class="badge badge-secondary">New</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Subscribing to Stock</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-map-marker-alt"></i>Stock Subscriptions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Trade.AI Dashboard </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="ecommerce-widget">
+
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Account Balance</h5>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <a href = "{{ url_for('dashboard') }}"><span class="fa fa-refresh fa-spin"></span></a>
+                                        </div>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">$ {{ balance }}</h1>
+                                        </div>
+                                    </div>
+                                    <div id="sparkline-revenue"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-0 col-md-0 col-sm-3 col-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Welcome {{session.username}}!</h5>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <a href = "{{ url_for('connection') }}"><span class="fa fa-cloud "></span></a>
+                                        </div>
+                                        <div class="metric-value d-inline-block">
+                                            <h2 class="mb-1">Refresh your page every once in a while to <br> see updated changes!</h2>
+                                            <h4 class="mb-1"><br>This webpage has limited usability if your API Key is wrong or the Stock Market is closed</h4>
+                                            <h4 class="mb-1">Check status by clicking the cloud icon</h4>
+                                        </div>
+                                    </div>
+                                    <div id="sparkline-revenue"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- ============================================================== -->
+                      
+                            <!-- ============================================================== -->
+
+                                          <!-- recent orders  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-9 col-lg-9 col-md-6 col-sm-3 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Algorithms</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">#</th>
+                                                        <th class="border-0">Algorithm Name</th>
+                                                        <th class="border-0">Algorithm Id</th>
+                                                        <th class="border-0">Last Updated</th>
+                                                        <th class="border-0">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>{{ algo_list.algoname1 }} </td>
+                                                        <td>{{ algo_list.algoid1 }} </td>
+                                                        <td>{{ algo_list.time1 }}</td>
+                                                        <td>{{ algo_list.profit1 }} </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>{{ algo_list.algoname2 }} </td>
+                                                        <td>{{ algo_list.algoid2 }} </td>
+                                                        <td>{{ algo_list.time2 }}</td>
+                                                        <td>{{ algo_list.profit2 }} </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>{{ algo_list.algoname3 }} </td>
+                                                        <td>{{ algo_list.algoid3 }} </td>
+                                                        <td>{{ algo_list.time3 }}</td>
+                                                        <td>{{ algo_list.profit3 }} </td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Down</td>
+                                                    </tr>
+                        
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>{{ algo_list.algoname4 }} </td>
+                                                        <td>{{ algo_list.algoid4 }} </td>
+                                                        <td>{{ algo_list.time4 }}</td>
+                                                        <td>{{ algo_list.profit4 }} </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end algorithms  -->
+                            <!-- ============================================================== -->
+
+
+                            <!-- ============================================================== -->
+                            <!-- subscribe to stock -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-0 col-md-0 col-sm-7 col-1">
+                                <div class="card">
+                                    <h5 class="card-header">Subscribe to stock</h5>
+                                    <div class="card-body">
+                                        <div class="login" style="display:flex; flex-direction: row; margin:auto; justify-content:center">
+                                            <form action="{{ url_for('stock') }}" method="post">
+                                                <input type="text" name="stock" style="font-size:10pt;height:50px;text-align:center;" size="35" placeholder="Enter Stock symbol to subscribe" id="stock" required>
+                                                <p> </p>
+                                                <div>
+                                                <input class="btn btn-outline-light float-bottom float-center" style="font-size:10pt;height:50px;justify-content:center;" type="submit" value="Stock" name="stock">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end customer acquistion  -->
+                            <!-- ============================================================== -->
+
+                            <!-- ============================================================== -->
+                                          <!-- recent Subscriptions -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-9 col-lg-9 col-md-6 col-sm-3 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Stock Subscriptions</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">#</th>
+                                                        <th class="border-0">Symbol</th>
+                                                        <th class="border-0">Ask</th>
+                                                        <th class="border-0">Bid</th>
+                                                        <th class="border-0">Last Updated</th>
+                                                        <th class="border-0">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>{{ stock_list.symbol1 }}</td>
+                                                        <td>{{ stock_list.ask1 }}</td>
+                                                        <td>{{ stock_list.bid1 }}</td>
+                                                        <td>{{ stock_list.time1 }}</td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>{{ stock_list.symbol2 }}</td>
+                                                        <td>{{ stock_list.ask2 }}</td>
+                                                        <td>{{ stock_list.bid2 }}</td>
+                                                        <td>{{ stock_list.time2 }}</td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>{{ stock_list.symbol3 }}</td>
+                                                        <td>{{ stock_list.ask3 }}</td>
+                                                        <td>{{ stock_list.bid3 }}</td>
+                                                        <td>{{ stock_list.time3 }}</td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>{{ stock_list.symbol4 }}</td>
+                                                        <td>{{ stock_list.ask4 }}</td>
+                                                        <td>{{ stock_list.bid4 }}</td>
+                                                        <td>{{ stock_list.time4 }}</td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Running</td>
+                                                    </tr>
+            
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end recent orders  -->
+                            <!-- ============================================================== -->
+
+
+                        </div>
+
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- No of companies  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Companies</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">1328</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end companies  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Number of Transactions  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Transactions</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">1245</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end transactions  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- Trading Volume  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Trading Volume</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">13000</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end Trading volume  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- total orders  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Total Orders</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">1340</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light "><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">4%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end total orders  -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- total revenue  -->
+                            <!-- ============================================================== -->
+  
+                            
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- category revenue  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Revenue by Category</h5>
+                                    <div class="card-body">
+                                        <div id="c3chart_category" style="height: 420px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end category revenue  -->
+                            <!-- ============================================================== -->
+
+                            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header"> Total Profit</h5>
+                                    <div class="card-body">
+                                        <div id="morris_totalrevenue"></div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="display-7 font-weight-bold"><span class="text-primary d-inline-block">$26,000</span><span class="text-success float-right">+9.45%</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                             Copyright Team2.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="static/assets2/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="static/assets2/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="static/assets2/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="static/assets2/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="static/assets2/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="static/assets2/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="static/assets2/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="static/assets2/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="static/assets2/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="static/assets2/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="static/assets2/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="static/assets2/libs/js/dashboard-ecommerce.js"></script>
+</body>
+ 
+</html>

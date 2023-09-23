@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edit Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+
+<body>
+    <div class="sign_up">
+        <h1>Edit Profile</h1>
+        <form method="post">
+            <label for="username">
+                <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Username" id="username" required value="{{ user.username }}">
+
+            <label for="password">
+                <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required value="{{ user.password }}">
+
+            <label for="phone_number">
+                <i class="fas fa-phone"></i>
+            </label>
+            <input type="text" name="phone_number" placeholder="Phone number" id="phone_number" required value="{{ user.phone_number }}">
+
+            <label for="forex_id">
+                <i class="fas fa-coins"></i>
+            </label>
+            <input type="text" name="forex_id" placeholder="Paste your Fxcm id" id="forex_id" required value="{{ user.forex_id }}">
+
+            <label for="api_key">
+                <i class="fas fa-key"></i>
+            </label>
+            <input type="text" name="api_key" placeholder="Paste new API key" id="api_key" required value="{{ user.api_key }}">
+            <input type="submit" name="update" value="Update">
+        </form>
+
+        <h1>Delete Account</h1>
+        <form method="post">
+            <input type="submit" name="delete" value="Delete Account">
+        </form>
+    </div> 
+</body> 
+
+</html>
